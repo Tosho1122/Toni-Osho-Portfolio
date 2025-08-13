@@ -37,8 +37,33 @@ export const projects: Project[] = [
       { name: "Unity", icon: "/Toni-Osho-Portfolio/icons/Unity.png", color: "gray" },
       { name: "C#", icon: "/Toni-Osho-Portfolio/icons/csharp.png", color: "purple" },
       { name: "Game Design", color: "green" },
-      { name: "Audio Design", color: "yellow" }
+      { name: "FMOD", icon: "/Toni-Osho-Portfolio/icons/Fmod.png", color: "red" }
     ],
+    categories: ["Game Development"]
+  },
+  {
+    title: "Zeitghast",
+    description: "Published commercial 2D platformer-shooter achieving 83% positive reviews on Steam. Built with Unity and C# featuring fast-paced action, weapon variety, and time-based gameplay mechanics.",
+    longDescription: "Zeitghast is a commercially published 2D platformer-shooter that achieved 83% positive reviews on Steam. I architected the core game mechanics including player movement, combat systems, weapon variety, and innovative time-based gameplay mechanics using C# and Unity. The game features complex systems including a character controller with jumping and dashing mechanics, sophisticated enemy AI, level progression systems, and score-based gameplay designed for fast-paced action platforming. Using FMOD, I created an immersive audio experience with an original soundtrack and comprehensive sound effects to enhance player engagement. This project represents a complete game development cycle from initial concept through Steam release, where I managed both technical direction and feature implementation.",
+    thumbnail: "/Toni-Osho-Portfolio/images/Projects/Zeitghast/Zeitgahst-1.jpg",
+    images: [
+      "/Toni-Osho-Portfolio/images/Projects/Zeitghast/Zeitgahst-1.jpg",
+      "/Toni-Osho-Portfolio/images/Projects/Zeitghast/Zeitgahst-2.jpg",
+      "/Toni-Osho-Portfolio/images/Projects/Zeitghast/Zeitgahst-3.jpg",
+      "/Toni-Osho-Portfolio/images/Projects/Zeitghast/Zeitgahst-4.jpg",
+      "/Toni-Osho-Portfolio/images/Projects/Zeitghast/Zeitgahst-5.jpg",
+      "/Toni-Osho-Portfolio/images/Projects/Zeitghast/Zeitgahst-6.jpg",
+      "/Toni-Osho-Portfolio/images/Projects/Zeitghast/Zeitgahst-7.jpg"
+    ],
+    youtubeUrl: "https://www.youtube.com/watch?v=r8PjadkBUMY",
+    technologies: [
+      { name: "Unity", icon: "/Toni-Osho-Portfolio/icons/Unity.png", color: "gray" },
+      { name: "C#", icon: "/Toni-Osho-Portfolio/icons/csharp.png", color: "purple" },
+      { name: "FMOD", icon: "/Toni-Osho-Portfolio/icons/Fmod.png", color: "red" },
+      { name: "Game Design", color: "green" },
+      { name: "Steam Publishing", color: "blue" }
+    ],
+    liveLink: "https://store.steampowered.com/app/2593070/Zeitghast/",
     categories: ["Game Development"]
   },
   {
@@ -100,7 +125,29 @@ export const projects: Project[] = [
       { name: "Tailwind CSS", icon: "/Toni-Osho-Portfolio/icons/Tailwind.png", color: "blue" },
       { name: "SQLAlchemy", color: "red" }
     ],
-    githubLink: "https://github.com/your-username/SimplyHotel",
+    githubLink: "",
     categories: ["Frontend", "Backend"]
+  },
+  {
+    title: "Oil & Gas Field Management System",
+    description: "Comprehensive web application for oil and gas field operations with React frontend and TypeScript architecture. Features field management, reservoir tracking, well monitoring, and daily production data reporting with role-based authentication.",
+    longDescription: "A specialized oil and gas industry management application built with modern web technologies. The React frontend provides an intuitive interface for managing oil and gas fields, reservoirs, and wells with comprehensive daily production tracking. The application features user authentication with role-based access control, field and reservoir management with hierarchical relationships, well monitoring systems, and detailed reporting capabilities. Built with TypeScript for enhanced code reliability and maintainability, styled with Tailwind CSS for responsive design, and configured with strict type checking for production-grade quality.",
+    thumbnail: "/Toni-Osho-Portfolio/images/Projects/Oil&Gas/Oil&GasReporting-0.png",
+    images: [
+      "/Toni-Osho-Portfolio/images/Projects/Oil&Gas/Oil&GasReporting-0.png",
+      "/Toni-Osho-Portfolio/images/Projects/Oil&Gas/Oil&GasReporting-1.png",
+      "/Toni-Osho-Portfolio/images/Projects/Oil&Gas/Oil&GasReporting-2.png",
+      "/Toni-Osho-Portfolio/images/Projects/Oil&Gas/Oil&GasReporting-3.png",
+      "/Toni-Osho-Portfolio/images/Projects/Oil&Gas/Oil&GasReporting-4.png",
+      "/Toni-Osho-Portfolio/images/Projects/Oil&Gas/Oil&GasReporting-5.png"
+    ],
+    technologies: [
+      { name: "React", icon: "/Toni-Osho-Portfolio/icons/React.png", color: "blue" },
+      { name: "TypeScript", icon: "/Toni-Osho-Portfolio/icons/TypeScript.png", color: "blue" },
+      { name: "Tailwind CSS", icon: "/Toni-Osho-Portfolio/icons/Tailwind.png", color: "blue" },
+      { name: "JavaScript", icon: "/Toni-Osho-Portfolio/icons/JavaScript.png", color: "yellow" }
+    ],
+    githubLink: "",
+    categories: ["Frontend"]
   }
 ];

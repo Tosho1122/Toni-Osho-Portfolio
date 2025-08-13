@@ -26,7 +26,7 @@ const TechnologyBadge: React.FC<TechnologyBadgeProps> = ({
       ${colorClasses[color]}
       transition-all duration-200 hover:shadow-md hover:scale-105
     `}>
-      {icon && <img src={icon} alt={name} className="w-4 h-4" />}
+      {icon && <img src={icon} alt={name} className="w-4 h-4 object-contain" />}
       {name}
     </span>
   );

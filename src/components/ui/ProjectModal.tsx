@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import TechnologyBadge from './TechnologyBadge';
 
 interface Technology {
@@ -62,15 +63,37 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      {/* Backdrop */}
-      <div 
-        className="absolute inset-0 bg-black/80 backdrop-blur-sm"
-        onClick={onClose}
-      />
-      
-      {/* Modal Content */}
-      <div className="relative bg-gradient-to-r from-gray-900/95 via-black/95 to-gray-900/95 backdrop-blur-md rounded-2xl shadow-2xl max-w-6xl max-h-[90vh] overflow-hidden mx-4 border border-gray-700/50">
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div 
+          className="fixed inset-0 z-50 flex items-center justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          {/* Backdrop */}
+          <motion.div 
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            onClick={onClose}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          />
+          
+          {/* Modal Content */}
+          <motion.div 
+            className="relative bg-gradient-to-r from-gray-900/95 via-black/95 to-gray-900/95 backdrop-blur-md rounded-2xl shadow-2xl max-w-6xl max-h-[90vh] overflow-hidden mx-4 border border-gray-700/50"
+            initial={{ scale: 0.8, opacity: 0, y: 50 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.8, opacity: 0, y: 50 }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 300, 
+              damping: 30,
+              duration: 0.4 
+            }}
+          >
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -83,16 +106,45 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
 
         <div className="overflow-y-auto max-h-[90vh] scrollbar-hide">
           {/* Header */}
-          <div className="p-6 border-b border-gray-700/50">
-            <h2 className="text-3xl font-bold text-white mb-2">{title}</h2>
-            <p className="text-gray-300 text-lg">{description}</p>
-          </div>
+          <motion.div 
+            className="p-6 border-b border-gray-700/50"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.4 }}
+          >
+            <motion.h2 
+              className="text-3xl font-bold text-white mb-2"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3, duration: 0.4 }}
+            >
+              {title}
+            </motion.h2>
+            <motion.p 
+              className="text-gray-300 text-lg"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4, duration: 0.4 }}
+            >
+              {description}
+            </motion.p>
+          </motion.div>
 
           {/* Content Section */}
-          <div className="p-6">
+          <motion.div 
+            className="p-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.4 }}
+          >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Left Column - About and Details */}
-              <div className="space-y-6">
+              <motion.div 
+                className="space-y-6"
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.6, duration: 0.4 }}
+              >
                 {/* Long Description */}
                 {longDescription && (
                   <div>
@@ -141,10 +193,15 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                     )}
                   </div>
                 )}
-              </div>
+              </motion.div>
 
               {/* Right Column - Media */}
-              <div className="space-y-6">
+              <motion.div 
+                className="space-y-6"
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.7, duration: 0.4 }}
+              >
                 {/* Video */}
                 {(video || youtubeUrl) && (
                   <div>
@@ -228,12 +285,14 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                     )}
                   </div>
                 )}
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
-    </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 

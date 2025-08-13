@@ -3,6 +3,7 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
 import GameDev from './pages/GameDev';
+import FullStackDevelopment from './pages/FullStackDevelopment';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 
@@ -19,6 +20,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/gamedev" element={<GameDev />} />
+            <Route path="/fullstack" element={<FullStackDevelopment />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -226,12 +226,15 @@ const Home: React.FC = () => {
                 ))}
               </div>
               <div className="flex justify-center">
-                <span className="inline-flex items-center gap-2 bg-gray-600/50 text-gray-400 px-6 py-3 rounded-full text-sm font-medium border border-gray-600/50 cursor-not-allowed">
-                  Coming Soon
+                <Link 
+                  to="/fullstack" 
+                  className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full text-sm font-medium border border-blue-500 hover:border-blue-400 transition-all duration-300 hover:scale-105"
+                >
+                  View Projects
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
-                </span>
+                </Link>
               </div>
             </div>
 

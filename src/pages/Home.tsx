@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import ProjectCard from '../components/ui/ProjectCard';
 import ProjectModal from '../components/ui/ProjectModal';
 import { projects } from '../data/projects';
@@ -70,7 +71,7 @@ const Home: React.FC = () => {
         loop
         className="fixed top-0 left-0 w-full h-full object-cover z-0"
       >
-        <source src="/Videos/Website Background Video.mp4" type="video/mp4" />
+        <source src="/Toni-Osho-Portfolio/Videos/Website Background Video.mp4" type="video/mp4" />
       </video>
       
       {/* Overlay */}
@@ -105,32 +106,26 @@ const Home: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.4 }}
           >
-            <motion.a 
-              href="/fullstack" 
-              className="hover:text-blue-400 transition-all duration-300 hover:scale-105 cursor-pointer transform-gpu hover:drop-shadow-lg"
-              whileHover={{ scale: 1.05, color: "#60a5fa" }}
-              whileTap={{ scale: 0.95 }}
+            <motion.span
+              className="text-blue-400 cursor-default transform-gpu"
             >
               Full Stack Developer
-            </motion.a>
+            </motion.span>
             <span className="text-gray-400">|</span>
-            <motion.a 
-              href="/gamedev" 
+            <motion.span
               className="hover:text-blue-400 transition-all duration-300 hover:scale-105 cursor-pointer transform-gpu hover:drop-shadow-lg"
               whileHover={{ scale: 1.05, color: "#60a5fa" }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => window.location.hash = '#/gamedev'}
             >
               Game Developer
-            </motion.a>
+            </motion.span>
             <span className="text-gray-400">|</span>
-            <motion.a 
-              href="/software" 
-              className="hover:text-blue-400 transition-all duration-300 hover:scale-105 cursor-pointer transform-gpu hover:drop-shadow-lg"
-              whileHover={{ scale: 1.05, color: "#60a5fa" }}
-              whileTap={{ scale: 0.95 }}
+            <motion.span
+              className="text-blue-400 cursor-default transform-gpu"
             >
               Software Engineer
-            </motion.a>
+            </motion.span>
           </motion.div>
         </div>
       </motion.div>
@@ -158,7 +153,7 @@ const Home: React.FC = () => {
             {/* Profile Photo */}
             <div className="flex justify-center lg:justify-start">
               <motion.img
-                src="/images/toni.png"
+                src="/Toni-Osho-Portfolio/images/toni.png"
                 alt="Toni Osho"
                 className="w-64 h-64 rounded-full object-cover shadow-2xl"
                 whileHover={{ scale: 1.05, rotate: 2 }}
@@ -211,14 +206,14 @@ const Home: React.FC = () => {
               <h3 className="text-xl font-semibold text-white mb-4 text-center">Frontend Development</h3>
               <div className="grid grid-cols-3 gap-3 mb-4">
                 {[
-                  { name: "React", icon: "/src/assets/icons/React.png" },
-                  { name: "JavaScript", icon: "/src/assets/icons/JavaScript.png" },
-                  { name: "TypeScript", icon: "/src/assets/icons/TypeScript.png" },
-                  { name: "Vite", icon: "/src/assets/icons/Vite.png" },
-                  { name: "HTML5", icon: "/src/assets/icons/HTML.png" },
-                  { name: "CSS3", icon: "/src/assets/icons/CSS3.png" },
-                  { name: "SCSS", icon: "/src/assets/icons/SCSS.png" },
-                  { name: "Tailwind", icon: "/src/assets/icons/Tailwind.png" }
+                  { name: "React", icon: "/Toni-Osho-Portfolio/icons/React.png" },
+                  { name: "JavaScript", icon: "/Toni-Osho-Portfolio/icons/JavaScript.png" },
+                  { name: "TypeScript", icon: "/Toni-Osho-Portfolio/icons/TypeScript.png" },
+                  { name: "Vite", icon: "/Toni-Osho-Portfolio/icons/Vite.png" },
+                  { name: "HTML5", icon: "/Toni-Osho-Portfolio/icons/HTML.png" },
+                  { name: "CSS3", icon: "/Toni-Osho-Portfolio/icons/CSS3.png" },
+                  { name: "SCSS", icon: "/Toni-Osho-Portfolio/icons/SCSS.png" },
+                  { name: "Tailwind", icon: "/Toni-Osho-Portfolio/icons/Tailwind.png" }
                 ].map((tech, index) => (
                   <div key={index} className="flex flex-col items-center rounded-lg transition-all duration-200 aspect-square justify-center hover:scale-110">
                     <img 
@@ -231,12 +226,12 @@ const Home: React.FC = () => {
                 ))}
               </div>
               <div className="flex justify-center">
-                <a href="/fullstack" className="inline-flex items-center gap-2 bg-gray-800/70 hover:bg-gray-700/80 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-600/50 hover:border-white/50 hover:text-white hover:scale-105">
-                  Learn More
+                <span className="inline-flex items-center gap-2 bg-gray-600/50 text-gray-400 px-6 py-3 rounded-full text-sm font-medium border border-gray-600/50 cursor-not-allowed">
+                  Coming Soon
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                </a>
+                </span>
               </div>
             </div>
 
@@ -245,12 +240,12 @@ const Home: React.FC = () => {
               <h3 className="text-xl font-semibold text-white mb-4 text-center">Backend & Database</h3>
               <div className="grid grid-cols-3 gap-3 mb-4">
                 {[
-                  { name: "Node.js", icon: "/src/assets/icons/NodeJS.png" },
-                  { name: "Python", icon: "/src/assets/icons/Python.png" },
-                  { name: "FastAPI", icon: "/src/assets/icons/Fast Api.png" },
-                  { name: "C++", icon: "/src/assets/icons/C++.png" },
-                  { name: "Java", icon: "/src/assets/icons/Java.png" },
-                  { name: "MySQL", icon: "/src/assets/icons/MySQL.png" }
+                  { name: "Node.js", icon: "/Toni-Osho-Portfolio/icons/NodeJS.png" },
+                  { name: "Python", icon: "/Toni-Osho-Portfolio/icons/Python.png" },
+                  { name: "FastAPI", icon: "/Toni-Osho-Portfolio/icons/Fast Api.png" },
+                  { name: "C++", icon: "/Toni-Osho-Portfolio/icons/C++.png" },
+                  { name: "Java", icon: "/Toni-Osho-Portfolio/icons/Java.png" },
+                  { name: "MySQL", icon: "/Toni-Osho-Portfolio/icons/MySQL.png" }
                 ].map((tech, index) => (
                   <div key={index} className="flex flex-col items-center rounded-lg transition-all duration-200 aspect-square justify-center hover:scale-110">
                     <img 
@@ -263,12 +258,12 @@ const Home: React.FC = () => {
                 ))}
               </div>
               <div className="flex justify-center">
-                <a href="/software" className="inline-flex items-center gap-2 bg-gray-800/70 hover:bg-gray-700/80 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-600/50 hover:border-white/50 hover:text-white hover:scale-105">
-                  Learn More
+                <span className="inline-flex items-center gap-2 bg-gray-600/50 text-gray-400 px-6 py-3 rounded-full text-sm font-medium border border-gray-600/50 cursor-not-allowed">
+                  Coming Soon
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                </a>
+                </span>
               </div>
             </div>
 
@@ -277,10 +272,10 @@ const Home: React.FC = () => {
               <h3 className="text-xl font-semibold text-white mb-4 text-center">Game Development</h3>
               <div className="grid grid-cols-3 gap-3 mb-4">
                 {[
-                  { name: "Unity", icon: "/src/assets/icons/Unity.png" },
-                  { name: "C#", icon: "/src/assets/icons/csharp.png" },
-                  { name: "PlasticSCM", icon: "/src/assets/icons/PlasticSCM.png" },
-                  { name: "FMOD", icon: "/src/assets/icons/Fmod.png" }
+                  { name: "Unity", icon: "/Toni-Osho-Portfolio/icons/Unity.png" },
+                  { name: "C#", icon: "/Toni-Osho-Portfolio/icons/csharp.png" },
+                  { name: "PlasticSCM", icon: "/Toni-Osho-Portfolio/icons/PlasticSCM.png" },
+                  { name: "FMOD", icon: "/Toni-Osho-Portfolio/icons/Fmod.png" }
                 ].map((tech, index) => (
                   <div key={index} className="flex flex-col items-center rounded-lg transition-all duration-200 aspect-square justify-center hover:scale-110">
                     <img 
@@ -293,12 +288,12 @@ const Home: React.FC = () => {
                 ))}
               </div>
               <div className="flex justify-center">
-                <a href="/gamedev" className="inline-flex items-center gap-2 bg-gray-800/70 hover:bg-gray-700/80 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-600/50 hover:border-white/50 hover:text-white hover:scale-105">
+                <Link to="/gamedev" className="inline-flex items-center gap-2 bg-gray-800/70 hover:bg-gray-700/80 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-600/50 hover:border-white/50 hover:text-white hover:scale-105">
                   Learn More
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -307,9 +302,9 @@ const Home: React.FC = () => {
               <h3 className="text-xl font-semibold text-white mb-4 text-center">Development Tools</h3>
               <div className="grid grid-cols-3 gap-3 mb-4">
                 {[
-                  { name: "Git", icon: "/src/assets/icons/Git.png" },
-                  { name: "Visual Studio", icon: "/src/assets/icons/VisualStudio.png" },
-                  { name: "Linux", icon: "/src/assets/icons/Linux.png" }
+                  { name: "Git", icon: "/Toni-Osho-Portfolio/icons/Git.png" },
+                  { name: "Visual Studio", icon: "/Toni-Osho-Portfolio/icons/VisualStudio.png" },
+                  { name: "Linux", icon: "/Toni-Osho-Portfolio/icons/Linux.png" }
                 ].map((tech, index) => (
                   <div key={index} className="flex flex-col items-center rounded-lg transition-all duration-200 aspect-square justify-center hover:scale-110">
                     <img 
@@ -322,12 +317,12 @@ const Home: React.FC = () => {
                 ))}
               </div>
               <div className="flex justify-center">
-                <a href="/software" className="inline-flex items-center gap-2 bg-gray-800/70 hover:bg-gray-700/80 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-600/50 hover:border-white/50 hover:text-white hover:scale-105">
-                  Learn More
+                <span className="inline-flex items-center gap-2 bg-gray-600/50 text-gray-400 px-6 py-3 rounded-full text-sm font-medium border border-gray-600/50 cursor-not-allowed">
+                  Coming Soon
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                </a>
+                </span>
               </div>
             </div>
 
@@ -380,12 +375,12 @@ const Home: React.FC = () => {
             Ready to bring your ideas to life? I'm always excited to work on new projects and collaborate with amazing people.
           </p>
           <div className="flex justify-center">
-            <a href="/contact" className="inline-flex items-center gap-2 bg-gray-800/70 hover:bg-gray-700/80 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-600/50 hover:border-white/50 hover:text-white hover:scale-105">
+            <Link to="/contact" className="inline-flex items-center gap-2 bg-gray-800/70 hover:bg-gray-700/80 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-600/50 hover:border-white/50 hover:text-white hover:scale-105">
               Contact Me
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </a>
+            </Link>
           </div>
           </section>
         </AnimatedSection>

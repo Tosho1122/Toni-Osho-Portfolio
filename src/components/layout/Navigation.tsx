@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Button from '../ui/Button';
 import { Home, Code, Mail, Menu, X } from 'lucide-react';
 
 const Navigation: React.FC = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [currentPath, setCurrentPath] = useState(window.location.pathname);
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -17,26 +19,15 @@ const Navigation: React.FC = () => {
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
-  useEffect(() => {
-    const updatePath = () => {
-      setCurrentPath(window.location.pathname);
-    };
-
-    window.addEventListener('popstate', updatePath);
-    return () => window.removeEventListener('popstate', updatePath);
-  }, []);
   
   const navItems = [
     { name: 'Home', href: '/', icon: <Home size={16} /> },
-    // { name: 'Full Stack', href: '/fullstack', icon: <Monitor size={16} /> },
-    // { name: 'Game Developer', href: '/gamedev', icon: <Gamepad2 size={16} /> },
-    { name: 'Software', href: '/software', icon: <Code size={16} /> },
+    { name: 'Game Dev', href: '/gamedev', icon: <Code size={16} /> },
     { name: 'Contact', href: '/contact', icon: <Mail size={16} /> }
   ];
 
   const handleNavClick = (href: string) => {
-    window.location.href = href;
-    setCurrentPath(href);
+    navigate(href);
     setIsOpen(false);
   };
 
@@ -52,8 +43,8 @@ const Navigation: React.FC = () => {
                 onClick={() => handleNavClick(item.href)}
                 variant="nav"
                 icon={item.icon}
-                disabled={currentPath === item.href}
-                isActive={currentPath === item.href}>
+                disabled={location.pathname === item.href}
+                isActive={location.pathname === item.href}>
                 {item.name}
               </Button>
             ))}
@@ -82,9 +73,9 @@ const Navigation: React.FC = () => {
                 <button
                   key={item.name}
                   onClick={() => handleNavClick(item.href)}
-                  disabled={currentPath === item.href}
+                  disabled={location.pathname === item.href}
                   className={`flex items-center justify-center w-full px-6 py-4 rounded-xl transition-all duration-300 text-lg font-semibold group ${
-                    currentPath === item.href 
+                    location.pathname === item.href 
                       ? 'text-white bg-white/20 border-2 border-white cursor-not-allowed shadow-lg' 
                       : 'text-white hover:text-gray-300 hover:bg-white/10 active:bg-white/15 border-2 border-transparent hover:border-white/30'
                   }`}

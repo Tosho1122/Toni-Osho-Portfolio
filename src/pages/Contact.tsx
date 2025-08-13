@@ -75,7 +75,7 @@ const Contact: React.FC = () => {
 
   const handleResumeDownload = () => {
     const link = document.createElement('a');
-    link.href = '/Oluwatoni Osho Resume.pdf';
+    link.href = '/Toni-Osho-Portfolio/Oluwatoni Osho Resume.pdf';
     link.download = 'Oluwatoni Osho Resume.pdf';
     document.body.appendChild(link);
     link.click();
@@ -84,7 +84,7 @@ const Contact: React.FC = () => {
 
   const handleCoverLetterDownload = () => {
     const link = document.createElement('a');
-    link.href = '/Oluwatoni Osho Cover Letter.pdf';
+    link.href = '/Toni-Osho-Portfolio/Oluwatoni Osho Cover Letter.pdf';
     link.download = 'Oluwatoni Osho Cover Letter.pdf';
     document.body.appendChild(link);
     link.click();
@@ -100,7 +100,7 @@ const Contact: React.FC = () => {
         loop
         className="fixed top-0 left-0 w-full h-full object-cover z-0"
       >
-        <source src="/Videos/Website Background Video.mp4" type="video/mp4" />
+        <source src="/Toni-Osho-Portfolio/Videos/Website Background Video.mp4" type="video/mp4" />
       </video>
       
       {/* Overlay */}

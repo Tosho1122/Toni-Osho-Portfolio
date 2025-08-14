@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import TechnologyBadge from './TechnologyBadge';
 
@@ -14,7 +15,7 @@ interface ProjectModalProps {
   title: string;
   description: string;
   longDescription?: string;
-  images: string[];
+  images?: string[];
   video?: string;
   youtubeUrl?: string;
   technologies: Technology[];
@@ -28,7 +29,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
   title,
   description,
   longDescription,
-  images,
+  images = [],
   video,
   youtubeUrl,
   technologies,
@@ -62,11 +63,11 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
     setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
-  return (
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
         <motion.div 
-          className="fixed inset-0 z-50 flex items-center justify-center"
+          className="fixed inset-0 z-[9999] flex items-center justify-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -94,10 +95,10 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
               duration: 0.4 
             }}
           >
-        {/* Close Button */}
+        {/* Close Button - Navigation account style */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 bg-gray-800/80 hover:bg-blue-400/20 text-white hover:text-blue-400 rounded-full p-2 transition-all duration-300 border border-gray-600/50 hover:border-blue-400/50"
+          className="absolute top-4 right-4 z-10 inline-flex items-center justify-center p-3 rounded-full text-white hover:text-gray-300 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-300 hover:scale-105"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -137,7 +138,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.4 }}
           >
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className={`grid grid-cols-1 ${(images.length > 0 || video || youtubeUrl) ? 'lg:grid-cols-2' : ''} gap-6`}>
               {/* Left Column - About and Details */}
               <motion.div 
                 className="space-y-6"
@@ -168,7 +169,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                   </div>
                 </div>
 
-                {/* Links */}
+                {/* Links - Learn More button style */}
                 {(liveLink || githubLink) && (
                   <div className="flex gap-4">
                     {liveLink && (
@@ -176,9 +177,12 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                         href={liveLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-blue-600/80 hover:bg-blue-400 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 border border-blue-400/50 hover:border-blue-400"
+                        className="inline-flex items-center gap-2 bg-gray-800/70 hover:bg-gray-700/80 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-600/50 hover:border-white/50 hover:text-white hover:scale-105"
                       >
                         View Live Project
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
                       </a>
                     )}
                     {githubLink && (
@@ -186,9 +190,12 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                         href={githubLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-gray-800/80 hover:bg-gray-700 text-white hover:text-blue-400 px-6 py-3 rounded-lg font-semibold transition-all duration-300 border border-gray-600/50 hover:border-blue-400/50"
+                        className="inline-flex items-center gap-2 bg-gray-800/70 hover:bg-gray-700/80 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-600/50 hover:border-white/50 hover:text-white hover:scale-105"
                       >
                         View on GitHub
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
                       </a>
                     )}
                   </div>
@@ -196,12 +203,13 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
               </motion.div>
 
               {/* Right Column - Media */}
-              <motion.div 
-                className="space-y-6"
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.7, duration: 0.4 }}
-              >
+              {(images.length > 0 || video || youtubeUrl) && (
+                <motion.div 
+                  className="space-y-6"
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.7, duration: 0.4 }}
+                >
                 {/* Video */}
                 {(video || youtubeUrl) && (
                   <div>
@@ -245,7 +253,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                         <>
                           <button
                             onClick={prevImage}
-                            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800/80 hover:bg-blue-400/20 text-white hover:text-blue-400 rounded-full p-2 transition-all duration-300 border border-gray-600/50 hover:border-blue-400/50"
+                            className="absolute left-2 top-1/2 transform -translate-y-1/2 inline-flex items-center justify-center p-3 rounded-full text-white hover:text-gray-300 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-300 hover:scale-105"
                           >
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -253,7 +261,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                           </button>
                           <button
                             onClick={nextImage}
-                            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800/80 hover:bg-blue-400/20 text-white hover:text-blue-400 rounded-full p-2 transition-all duration-300 border border-gray-600/50 hover:border-blue-400/50"
+                            className="absolute right-2 top-1/2 transform -translate-y-1/2 inline-flex items-center justify-center p-3 rounded-full text-white hover:text-gray-300 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-300 hover:scale-105"
                           >
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -285,14 +293,16 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                     )}
                   </div>
                 )}
-              </motion.div>
+                </motion.div>
+              )}
             </div>
           </motion.div>
         </div>
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 };
 

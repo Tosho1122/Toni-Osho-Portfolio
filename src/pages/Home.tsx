@@ -91,8 +91,9 @@ const Home: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.1 }}
           >
-            Hi I'm <motion.span 
-              className="text-blue-400"
+            <span className="block sm:inline">Hi I'm </span>
+            <motion.span 
+              className="text-blue-400 block sm:inline"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3, delay: 0.3 }}
@@ -101,17 +102,20 @@ const Home: React.FC = () => {
             </motion.span>
           </motion.h1>
           <motion.div 
-            className="text-xl lg:text-2xl text-gray-200 flex flex-wrap items-center justify-center gap-2"
+            className="text-xl lg:text-2xl text-gray-200 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-2 sm:gap-2"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.4 }}
           >
             <motion.span
-              className="text-blue-400 cursor-default transform-gpu"
+              className="hover:text-blue-400 transition-all duration-300 hover:scale-105 cursor-pointer transform-gpu hover:drop-shadow-lg"
+              whileHover={{ scale: 1.05, color: "#60a5fa" }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => window.location.hash = '#/fullstack'}
             >
               Full Stack Developer
             </motion.span>
-            <span className="text-gray-400">|</span>
+            <span className="text-gray-400 hidden sm:inline">|</span>
             <motion.span
               className="hover:text-blue-400 transition-all duration-300 hover:scale-105 cursor-pointer transform-gpu hover:drop-shadow-lg"
               whileHover={{ scale: 1.05, color: "#60a5fa" }}
@@ -120,11 +124,14 @@ const Home: React.FC = () => {
             >
               Game Developer
             </motion.span>
-            <span className="text-gray-400">|</span>
+            <span className="text-gray-400 hidden sm:inline">|</span>
             <motion.span
-              className="text-blue-400 cursor-default transform-gpu"
+              className="hover:text-blue-400 transition-all duration-300 hover:scale-105 cursor-pointer transform-gpu hover:drop-shadow-lg"
+              whileHover={{ scale: 1.05, color: "#60a5fa" }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => window.location.hash = '#/software'}
             >
-              Software Engineer
+              Software Development
             </motion.span>
           </motion.div>
         </div>
@@ -178,7 +185,7 @@ const Home: React.FC = () => {
         {/* Projects Section */}
         <AnimatedSection>
           <section className="mb-16 bg-black/50 backdrop-blur-sm p-8 rounded-lg">
-            <h2 className="text-3xl font-semibold text-white mb-4">Featured Projects</h2>
+            <h2 className="text-3xl font-semibold text-white mb-6">Featured Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {projects.map((project, index) => (
                 <ProjectCard
@@ -226,13 +233,10 @@ const Home: React.FC = () => {
                 ))}
               </div>
               <div className="flex justify-center">
-                <Link 
-                  to="/fullstack" 
-                  className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full text-sm font-medium border border-blue-500 hover:border-blue-400 transition-all duration-300 hover:scale-105"
-                >
-                  View Projects
+                <Link to="/fullstack" className="inline-flex items-center gap-2 bg-gray-800/70 hover:bg-gray-700/80 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-600/50 hover:border-white/50 hover:text-white hover:scale-105">
+                  Learn More
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </Link>
               </div>

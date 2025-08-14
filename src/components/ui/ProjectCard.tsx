@@ -11,7 +11,7 @@ interface Technology {
 interface ProjectCardProps {
   title: string;
   description: string;
-  thumbnail: string;
+  thumbnail?: string;
   images?: string[];
   technologies: Technology[];
   onClick: () => void;
@@ -26,7 +26,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   onClick
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const displayImages = images.length > 0 ? images : [thumbnail];
+  const hasImages = thumbnail || images.length > 0;
+  const displayImages = images.length > 0 ? images : (thumbnail ? [thumbnail] : []);
 
   useEffect(() => {
     if (displayImages.length <= 1) return;
@@ -57,44 +58,68 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         duration: 0.3 
       }}
     >
-      {/* Thumbnail */}
-      <motion.div className="relative overflow-hidden h-48">
-        <motion.img
-          src={displayImages[currentImageIndex]}
-          alt={`${title} - Image ${currentImageIndex + 1}`}
-          className="w-full h-full object-cover"
-          initial={{ scale: 1 }}
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 0.5 }}
-        />
-        <motion.div 
-          className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"
-          initial={{ opacity: 0 }}
-          whileHover={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-        />
-        
-        {/* Image indicator dots */}
-        {displayImages.length > 1 && (
+      {/* Thumbnail or Placeholder */}
+      <motion.div className={`relative overflow-hidden ${hasImages ? 'h-48' : 'h-24'}`}>
+        {hasImages ? (
+          <>
+            <motion.img
+              src={displayImages[currentImageIndex]}
+              alt={`${title} - Image ${currentImageIndex + 1}`}
+              className="w-full h-full object-cover"
+              initial={{ scale: 1 }}
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.5 }}
+            />
+            <motion.div 
+              className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"
+              initial={{ opacity: 0 }}
+              whileHover={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            />
+            
+            {/* Image indicator dots */}
+            {displayImages.length > 1 && (
+              <motion.div 
+                className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex gap-1"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                {displayImages.map((_, index) => (
+                  <motion.div
+                    key={index}
+                    className={`w-2 h-2 rounded-full ${
+                      index === currentImageIndex ? 'bg-white' : 'bg-white/50'
+                    }`}
+                    animate={{ 
+                      scale: index === currentImageIndex ? 1.2 : 1,
+                      opacity: index === currentImageIndex ? 1 : 0.5
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
+                ))}
+              </motion.div>
+            )}
+          </>
+        ) : (
           <motion.div 
-            className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex gap-1"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
+            className="w-full h-full bg-gradient-to-br from-blue-900/50 to-purple-900/50 flex items-center justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.3 }}
           >
-            {displayImages.map((_, index) => (
-              <motion.div
-                key={index}
-                className={`w-2 h-2 rounded-full ${
-                  index === currentImageIndex ? 'bg-white' : 'bg-white/50'
-                }`}
-                animate={{ 
-                  scale: index === currentImageIndex ? 1.2 : 1,
-                  opacity: index === currentImageIndex ? 1 : 0.5
-                }}
-                transition={{ duration: 0.3 }}
-              />
-            ))}
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+            >
+              <svg className="w-8 h-8 text-blue-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+              </svg>
+              <span className="text-blue-400 text-sm font-medium">{title}</span>
+            </motion.div>
           </motion.div>
         )}
       </motion.div>

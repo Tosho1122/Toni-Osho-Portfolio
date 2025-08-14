@@ -24,6 +24,8 @@ const Navigation: React.FC = () => {
     { name: 'Home', href: '/', icon: <Home size={16} /> },
     { name: 'Game Dev', href: '/gamedev', icon: <Code size={16} /> },
     { name: 'Full Stack', href: '/fullstack', icon: <Code size={16} /> },
+    { name: 'Software Dev', href: '/software', icon: <Code size={16} /> },
+    { name: 'All Projects', href: '/projects', icon: <Code size={16} /> },
     { name: 'Contact', href: '/contact', icon: <Mail size={16} /> }
   ];
 

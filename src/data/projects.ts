@@ -21,8 +21,8 @@ export interface Project {
 export const projects: Project[] = [
   {
     title: "Scale the Depths",
-    description: "Personal game project where I served as Lead Programmer, Sound Designer, and Composer. Developed using C# and Unity with focus on core game mechanics and performance optimization.",
-    longDescription: "Scale the Depths is a comprehensive Unity game project where I took on multiple roles including Lead Programmer, Sound Designer, and Composer. The project showcases advanced game development techniques with C# scripting, custom game mechanics, and optimized performance for smooth gameplay. I crafted immersive soundscapes and original music to enhance the player experience while managing a multidisciplinary team to ensure high-quality deliverables.",
+    description: "Award-winning fishing simulation that placed Top 20 in GMTK Game Jam 2024 out of thousands of entries. Featured by PC Gamer with innovative gameplay mechanics and cross-platform optimization.",
+    longDescription: "Scale the Depths is an award-winning fishing simulation that achieved Top 20 placement in GMTK Game Jam 2024 out of thousands of entries. I developed innovative gameplay mechanics for fishing and customer service simulation featuring mythical creatures. The game features responsive UI systems and touch controls optimized for mobile devices (Android/iOS), with performance optimization through profiling and memory management across all platforms. Using FMOD, I created an immersive audio experience with original soundtrack and sound effects to enhance player engagement. I designed scalable game systems from the initial 48-hour game jam prototype to full commercial Steam release, implementing a pixel-art aesthetic with smooth gameplay mechanics optimized for both web and desktop platforms. Featured by PC Gamer as a standout fishing game, demonstrating strong market appeal and player engagement. I managed rapid iteration from prototype to polished commercial product based on community feedback.",
     thumbnail: "/Toni-Osho-Portfolio/images/scale-depths-1.jpg",
     images: [
       "/Toni-Osho-Portfolio/images/scale-depths-1.jpg",
@@ -39,6 +39,7 @@ export const projects: Project[] = [
       { name: "Game Design", color: "green" },
       { name: "FMOD", icon: "/Toni-Osho-Portfolio/icons/Fmod.png", color: "red" }
     ],
+    liveLink: "https://store.steampowered.com/app/3198890/Scale_the_Depths/",
     categories: ["Game Development"]
   },
   {
@@ -89,11 +90,8 @@ export const projects: Project[] = [
     title: "UDP File Transfer Program",
     description: "Network programming project implementing UDP-based file transfer with packet segmentation, transmission, and reassembly. Includes error detection and packet loss handling.",
     longDescription: "A robust network programming solution that demonstrates advanced understanding of UDP protocols and file transfer mechanisms. The program efficiently handles large file transfers by implementing packet segmentation and reassembly algorithms. I incorporated error detection and packet loss recovery mechanisms to ensure reliable data transmission over unreliable network connections.",
-    thumbnail: "/Toni-Osho-Portfolio/images/udp-transfer-thumb.jpg",
-    images: [
-      "/Toni-Osho-Portfolio/images/udp-transfer-1.jpg",
-      "/Toni-Osho-Portfolio/images/udp-transfer-2.jpg"
-    ],
+    thumbnail: "",
+    images: [],
     technologies: [
       { name: "C++", icon: "/Toni-Osho-Portfolio/icons/C++.png", color: "blue" },
       { name: "Network Programming", color: "green" },

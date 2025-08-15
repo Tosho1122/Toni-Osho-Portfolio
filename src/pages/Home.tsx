@@ -209,18 +209,36 @@ const Home: React.FC = () => {
         <AnimatedSection>
           <section className="mb-16 bg-black/50 backdrop-blur-sm p-8 rounded-lg">
             <h2 className="text-3xl font-semibold text-white mb-6 text-center lg:text-left">Featured Projects</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {projects.map((project, index) => (
-                <ProjectCard
-                  key={index}
-                  title={project.title}
-                  description={project.description}
-                  thumbnail={project.thumbnail}
-                  images={project.images}
-                  technologies={project.technologies}
-                  onClick={() => handleProjectClick(project)}
-                />
-              ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {projects
+                .filter(project => [
+                  "Scale the Depths",
+                  "Hotel Management System", 
+                  "Kopi - Video Duplicate Detector",
+                  "UDP File Transfer Program"
+                ].includes(project.title))
+                .map((project, index) => (
+                  <ProjectCard
+                    key={index}
+                    title={project.title}
+                    description={project.description}
+                    thumbnail={project.thumbnail}
+                    images={project.images}
+                    technologies={project.technologies}
+                    onClick={() => handleProjectClick(project)}
+                  />
+                ))}
+            </div>
+            <div className="flex justify-center mt-8">
+              <Link 
+                to="/projects" 
+                className="inline-flex items-center gap-2 bg-gray-800/70 hover:bg-gray-700/80 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-600/50 hover:border-white/50 hover:text-white hover:scale-105"
+              >
+                See All Projects
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
             </div>
           </section>
         </AnimatedSection>
@@ -345,14 +363,6 @@ const Home: React.FC = () => {
                     <span className="text-gray-300 text-xs text-center font-medium pointer-events-none select-none">{tech.name}</span>
                   </div>
                 ))}
-              </div>
-              <div className="flex justify-center">
-                <span className="inline-flex items-center gap-2 bg-gray-600/50 text-gray-400 px-6 py-3 rounded-full text-sm font-medium border border-gray-600/50 cursor-not-allowed">
-                  Coming Soon
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </span>
               </div>
             </div>
 

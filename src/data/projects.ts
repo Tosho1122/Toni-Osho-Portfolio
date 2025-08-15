@@ -98,11 +98,11 @@ export const projects: Project[] = [
       { name: "UDP Protocol", color: "purple" },
       { name: "System Programming", color: "gray" }
     ],
-    githubLink: "https://github.com/toni-osho/udp-file-transfer",
+    githubLink: "https://github.com/Tosho1122/UDP-File-Transfer-Server-and-Client",
     categories: ["Software Development"]
   },
   {
-    title: "SimplyHotel Management System",
+    title: "Hotel Management System",
     description: "Complete hotel management web application with React frontend and FastAPI backend, integrated with MySQL database. Features comprehensive booking management, staff administration, security monitoring, and business analytics for hotel operations.",
     longDescription: "A full-stack hotel management system built with modern technologies. The React frontend provides an intuitive user interface for hotel staff to manage bookings, activate/deactivate room cards, monitor security alerts, and track business transactions. The FastAPI backend handles all API requests with comprehensive CRUD operations for bookings, staff management, visitor tracking, and security monitoring. The system includes role-based authentication (Owner/User permissions), real-time security alerts from IoT sensors, and detailed business insights. MySQL database optimizations ensure efficient data handling for hotel operations including booking management, staff administration, transaction tracking, and security monitoring.",
     thumbnail: "/Toni-Osho-Portfolio/images/Projects/Simply Hotel/SimplyHotel-1.png",
@@ -147,5 +147,24 @@ export const projects: Project[] = [
     ],
     githubLink: "",
     categories: ["Frontend"]
+  },
+  {
+    title: "Kopi - Video Duplicate Detector",
+    description: "Desktop application for detecting and managing duplicate video files using advanced computer vision and hashing algorithms. Features a PyQt5 GUI with parallel processing, content analysis, and smart duplicate grouping with thumbnail previews.",
+    longDescription: "Kopi is a comprehensive video duplicate detection tool built with Python that helps users identify and manage duplicate video files efficiently. The application uses advanced computer vision techniques including perceptual hashing (pHash), content analysis, and frame comparison to detect similar videos even with different resolutions, formats, or compression settings. Built with PyQt5 for a modern desktop interface, the tool features parallel processing for fast scanning of large video collections, intelligent duplicate grouping with similarity scoring, thumbnail generation for visual verification, and flexible file management options including keep largest, delete duplicates, and move to trash functionality. The application supports multiple video formats through PyAV integration and provides detailed logging and progress tracking for large-scale operations.",
+    thumbnail: "/Toni-Osho-Portfolio/images/Projects/KOPI/KOPI 01.png",
+    images: [
+      "/Toni-Osho-Portfolio/images/Projects/KOPI/KOPI 01.png",
+      "/Toni-Osho-Portfolio/images/Projects/KOPI/KOPI 02.png",
+      "/Toni-Osho-Portfolio/images/Projects/KOPI/KOPI 03.png"
+    ],
+    technologies: [
+      { name: "Python", icon: "/Toni-Osho-Portfolio/icons/Python.png", color: "blue" },
+      { name: "PyQt5", icon: "/Toni-Osho-Portfolio/icons/Qt.png", color: "green" },
+      { name: "OpenCV", icon: "/Toni-Osho-Portfolio/icons/OpenCV.png", color: "red" },
+      { name: "NumPy", icon: "/Toni-Osho-Portfolio/icons/NumPy.png", color: "blue" }
+    ],
+    githubLink: "https://github.com/Tosho1122/Kopi/",
+    categories: ["Software Development"]
   }
 ];

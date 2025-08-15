@@ -21,12 +21,12 @@ const Navigation: React.FC = () => {
 
   
   const navItems = [
-    { name: 'Home', href: '/', icon: <Home size={16} /> },
-    { name: 'Game Dev', href: '/gamedev', icon: <Gamepad2 size={16} /> },
-    { name: 'Full Stack', href: '/fullstack', icon: <Globe size={16} /> },
-    { name: 'Software Dev', href: '/software', icon: <Laptop size={16} /> },
-    { name: 'All Projects', href: '/projects', icon: <FolderOpen size={16} /> },
-    { name: 'Contact', href: '/contact', icon: <Mail size={16} /> }
+    { name: 'Home', href: '/', icon: <Home size={16} />, mobileIcon: <Home size={24} /> },
+    { name: 'Game Dev', href: '/gamedev', icon: <Gamepad2 size={16} />, mobileIcon: <Gamepad2 size={24} /> },
+    { name: 'Full Stack', href: '/fullstack', icon: <Globe size={16} />, mobileIcon: <Globe size={24} /> },
+    { name: 'Software Dev', href: '/software', icon: <Laptop size={16} />, mobileIcon: <Laptop size={24} /> },
+    { name: 'All Projects', href: '/projects', icon: <FolderOpen size={16} />, mobileIcon: <FolderOpen size={24} /> },
+    { name: 'Contact', href: '/contact', icon: <Mail size={16} />, mobileIcon: <Mail size={24} /> }
   ];
 
   const handleNavClick = (href: string) => {
@@ -61,7 +61,8 @@ const Navigation: React.FC = () => {
           <img 
             src="public/icons/ToniLogo.png" 
             alt="Toni Logo" 
-            className="h-8 w-auto ml-2"
+            className="h-8 w-auto ml-2 cursor-pointer hover:opacity-80 transition-opacity duration-200"
+            onClick={() => handleNavClick('/')}
           />
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -82,13 +83,13 @@ const Navigation: React.FC = () => {
                   key={item.name}
                   onClick={() => handleNavClick(item.href)}
                   disabled={location.pathname === item.href}
-                  className={`flex items-center justify-center w-full px-6 py-4 transition-all duration-300 text-base sm:text-lg md:text-xl lg:text-2xl font-semibold group relative border border-gray-700 rounded-lg ${
+                  className={`flex flex-col items-center justify-center w-full px-6 py-4 transition-all duration-300 text-base sm:text-lg md:text-xl lg:text-2xl font-semibold group relative border border-gray-700 rounded-lg ${
                     location.pathname === item.href 
                       ? 'text-black cursor-not-allowed bg-white border-white shadow-lg transform scale-105' 
                       : 'text-white hover:text-gray-300 hover:border-gray-500 hover:shadow-md'
                   }`}
                 >
-                  <span className="mr-3 transition-transform duration-300 group-hover:scale-110 group-active:scale-90">{item.icon}</span>
+                  <span className="mb-2 transition-transform duration-300 group-hover:scale-110 group-active:scale-90">{item.mobileIcon}</span>
                   <span className="transition-transform duration-300 group-hover:scale-105 group-active:scale-95">{item.name}</span>
                 </button>
               ))}

@@ -107,7 +107,7 @@ const Contact: React.FC = () => {
       <div className="fixed top-0 left-0 w-full h-full bg-gray-900/85 backdrop-blur-sm z-10"></div>
       
       {/* Content Container */}
-      <div className="relative z-20 min-h-screen flex flex-col items-center justify-center px-8 lg:px-16 py-20 space-y-6">
+      <div className="relative z-20 min-h-screen flex flex-col items-center justify-center px-8 lg:px-16 py-32 space-y-6">
         
         {/* Main Contact Box */}
         <motion.div 

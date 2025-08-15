@@ -30,9 +30,7 @@ const Header: React.FC = () => {
     }`}>
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex justify-center items-center py-4">
-          <div className="flex items-center">
-            <Navigation />
-          </div>
+          <Navigation />
         </div>
       </div>
     </header>

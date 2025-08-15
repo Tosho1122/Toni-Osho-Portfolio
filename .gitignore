@@ -127,3 +127,6 @@ out/
 
 # Sentry
 .sentryclirc
+
+# Project requirements file
+Requirements.md

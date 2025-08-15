@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Button from '../ui/Button';
-import { Home, Code, Mail, Menu, X } from 'lucide-react';
+import { Home, Mail, Menu, X, Gamepad2, Globe, Laptop, FolderOpen } from 'lucide-react';
 
 const Navigation: React.FC = () => {
   const navigate = useNavigate();
@@ -22,10 +22,10 @@ const Navigation: React.FC = () => {
   
   const navItems = [
     { name: 'Home', href: '/', icon: <Home size={16} /> },
-    { name: 'Game Dev', href: '/gamedev', icon: <Code size={16} /> },
-    { name: 'Full Stack', href: '/fullstack', icon: <Code size={16} /> },
-    { name: 'Software Dev', href: '/software', icon: <Code size={16} /> },
-    { name: 'All Projects', href: '/projects', icon: <Code size={16} /> },
+    { name: 'Game Dev', href: '/gamedev', icon: <Gamepad2 size={16} /> },
+    { name: 'Full Stack', href: '/fullstack', icon: <Globe size={16} /> },
+    { name: 'Software Dev', href: '/software', icon: <Laptop size={16} /> },
+    { name: 'All Projects', href: '/projects', icon: <FolderOpen size={16} /> },
     { name: 'Contact', href: '/contact', icon: <Mail size={16} /> }
   ];
 
@@ -57,10 +57,15 @@ const Navigation: React.FC = () => {
 
       {/* Mobile Menu Button */}
       {isMobile && (
-        <div className="flex justify-center">
+        <div className="flex justify-between items-center w-full px-4">
+          <img 
+            src="public/icons/ToniLogo.png" 
+            alt="Toni Logo" 
+            className="h-8 w-auto ml-2"
+          />
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="inline-flex items-center justify-center p-3 rounded-full text-white hover:text-gray-300 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-300 hover:scale-105"
+            className="inline-flex items-center justify-center p-3 rounded-full text-white hover:text-gray-300 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-300 hover:scale-105 mr-2"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -69,18 +74,18 @@ const Navigation: React.FC = () => {
 
       {/* Mobile Navigation Menu */}
       {isOpen && isMobile && (
-        <div className="absolute top-16 left-0 right-0 bg-black/95 backdrop-blur-sm border-t border-gray-700 z-[9999] shadow-lg">
-          <div className="px-6 pt-6 pb-8 max-w-sm mx-auto">
-            <div className="space-y-3">
+        <div className="fixed top-[72px] left-0 right-0 bg-black/95 backdrop-blur-sm border-t border-gray-700 z-[9999] shadow-lg">
+          <div className="px-6 pt-6 pb-8">
+            <div className="grid grid-cols-2 gap-3">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => handleNavClick(item.href)}
                   disabled={location.pathname === item.href}
-                  className={`flex items-center justify-center w-full px-6 py-4 rounded-xl transition-all duration-300 text-lg font-semibold group ${
+                  className={`flex items-center justify-center w-full px-6 py-4 transition-all duration-300 text-base sm:text-lg md:text-xl lg:text-2xl font-semibold group relative border border-gray-700 rounded-lg ${
                     location.pathname === item.href 
-                      ? 'text-white bg-white/20 border-2 border-white cursor-not-allowed shadow-lg' 
-                      : 'text-white hover:text-gray-300 hover:bg-white/10 active:bg-white/15 border-2 border-transparent hover:border-white/30'
+                      ? 'text-black cursor-not-allowed bg-white border-white shadow-lg transform scale-105' 
+                      : 'text-white hover:text-gray-300 hover:border-gray-500 hover:shadow-md'
                   }`}
                 >
                   <span className="mr-3 transition-transform duration-300 group-hover:scale-110 group-active:scale-90">{item.icon}</span>

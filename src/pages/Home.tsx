@@ -6,6 +6,25 @@ import ProjectModal from '../components/ui/ProjectModal';
 import { projects } from '../data/projects';
 import type { Project } from '../data/projects';
 
+// Preload critical images
+const preloadImages = () => {
+  const criticalImages = [
+    '/Toni-Osho-Portfolio/images/toni.png',
+    '/Toni-Osho-Portfolio/icons/React.png',
+    '/Toni-Osho-Portfolio/icons/JavaScript.png',
+    '/Toni-Osho-Portfolio/icons/TypeScript.png',
+    '/Toni-Osho-Portfolio/icons/Unity.png',
+    '/Toni-Osho-Portfolio/icons/csharp.png',
+    '/Toni-Osho-Portfolio/icons/NodeJS.png',
+    '/Toni-Osho-Portfolio/icons/Python.png'
+  ];
+  
+  criticalImages.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
+};
+
 // Animated Section Component
 const AnimatedSection = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
   const ref = useRef(null);
@@ -29,6 +48,9 @@ const Home: React.FC = () => {
   const [scrollOpacity, setScrollOpacity] = useState(0);
 
   useEffect(() => {
+    // Preload images when component mounts
+    preloadImages();
+    
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const windowHeight = window.innerHeight;
@@ -69,6 +91,7 @@ const Home: React.FC = () => {
         autoPlay
         muted
         loop
+        preload="auto"
         className="fixed top-0 left-0 w-full h-full object-cover z-0"
       >
         <source src="/Toni-Osho-Portfolio/Videos/Website Background Video.mp4" type="video/mp4" />
@@ -91,7 +114,7 @@ const Home: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.1 }}
           >
-            <span className="block sm:inline">Hi I'm </span>
+            <span className="block sm:inline">Hi I'm, </span>
             <motion.span 
               className="text-blue-400 block sm:inline"
               initial={{ opacity: 0, scale: 0.8 }}
@@ -131,7 +154,7 @@ const Home: React.FC = () => {
               whileTap={{ scale: 0.95 }}
               onClick={() => window.location.hash = '#/software'}
             >
-              Software Development
+              Software Developer
             </motion.span>
           </motion.div>
         </div>
@@ -141,9 +164,9 @@ const Home: React.FC = () => {
       <div 
         className="fixed inset-0 z-15 pointer-events-none transition-all duration-300"
         style={{
-          background: `linear-gradient(to right, 
+          background: `linear-gradient(to bottom, 
             rgba(17, 24, 39, ${0.25 * scrollOpacity}), 
-            rgba(0, 0, 0, ${0.95 * scrollOpacity}), 
+            rgba(0, 0, 0, ${0.85 * scrollOpacity}) 50%, 
             rgba(17, 24, 39, ${0.95 * scrollOpacity}))`
         }}
       />
@@ -155,7 +178,7 @@ const Home: React.FC = () => {
         {/* About Section */}
         <AnimatedSection>
           <section className="mb-16 bg-black/50 backdrop-blur-sm p-8 rounded-lg">
-          <h2 className="text-3xl font-semibold text-white mb-6">About Me</h2>
+          <h2 className="text-3xl font-semibold text-white mb-6 text-center lg:text-left">About Me</h2>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Profile Photo */}
             <div className="flex justify-center lg:justify-start">
@@ -185,7 +208,7 @@ const Home: React.FC = () => {
         {/* Projects Section */}
         <AnimatedSection>
           <section className="mb-16 bg-black/50 backdrop-blur-sm p-8 rounded-lg">
-            <h2 className="text-3xl font-semibold text-white mb-6">Featured Projects</h2>
+            <h2 className="text-3xl font-semibold text-white mb-6 text-center lg:text-left">Featured Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {projects.map((project, index) => (
                 <ProjectCard
@@ -205,7 +228,7 @@ const Home: React.FC = () => {
         {/* Skills Section */}
         <AnimatedSection>
           <section className="mb-16 bg-black/50 backdrop-blur-sm p-8 rounded-lg">
-          <h2 className="text-3xl font-semibold text-white mb-6">Skills & Technologies</h2>
+          <h2 className="text-3xl font-semibold text-white mb-6 text-center lg:text-left">Skills & Technologies</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
             {/* Frontend Development */}
@@ -340,7 +363,7 @@ const Home: React.FC = () => {
         {/* Experience Section */}
         <AnimatedSection>
           <section className="mb-16 bg-black/50 backdrop-blur-sm p-8 rounded-lg">
-          <h2 className="text-3xl font-semibold text-white mb-4">Experience</h2>
+          <h2 className="text-3xl font-semibold text-white mb-4 text-center lg:text-left">Experience</h2>
           <div className="space-y-8">
             {[
               {

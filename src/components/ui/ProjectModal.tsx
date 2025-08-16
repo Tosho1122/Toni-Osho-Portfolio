@@ -246,7 +246,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                       <img
                         src={images[currentImageIndex]}
                         alt={`${title} screenshot ${currentImageIndex + 1}`}
-                        className="w-full aspect-video object-cover rounded-lg shadow-lg"
+                        className="w-full max-h-96 object-contain rounded-lg shadow-lg"
                       />
                       
                       {images.length > 1 && (

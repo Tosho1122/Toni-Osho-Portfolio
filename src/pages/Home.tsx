@@ -215,7 +215,7 @@ const Home: React.FC = () => {
                   "Scale the Depths",
                   "Hotel Management System", 
                   "Kopi - Video Duplicate Detector",
-                  "UDP File Transfer Program"
+                  "Equipment Maintenance Tracker"
                 ].includes(project.title))
                 .map((project, index) => (
                   <ProjectCard
@@ -261,7 +261,9 @@ const Home: React.FC = () => {
                   { name: "HTML5", icon: "/Toni-Osho-Portfolio/icons/HTML.png" },
                   { name: "CSS3", icon: "/Toni-Osho-Portfolio/icons/CSS3.png" },
                   { name: "SCSS", icon: "/Toni-Osho-Portfolio/icons/SCSS.png" },
-                  { name: "Tailwind", icon: "/Toni-Osho-Portfolio/icons/Tailwind.png" }
+                  { name: "Tailwind", icon: "/Toni-Osho-Portfolio/icons/Tailwind.png" },
+                  { name: "Bootstrap", icon: "/Toni-Osho-Portfolio/icons/Bootstrap.png" },
+                  { name: "Blazor Server", icon: "/Toni-Osho-Portfolio/icons/Blazor.png" }
                 ].map((tech, index) => (
                   <div key={index} className="flex flex-col items-center rounded-lg transition-all duration-200 aspect-square justify-center hover:scale-110">
                     <img 
@@ -291,9 +293,12 @@ const Home: React.FC = () => {
                   { name: "Node.js", icon: "/Toni-Osho-Portfolio/icons/NodeJS.png" },
                   { name: "Python", icon: "/Toni-Osho-Portfolio/icons/Python.png" },
                   { name: "FastAPI", icon: "/Toni-Osho-Portfolio/icons/Fast Api.png" },
+                  { name: "ASP.NET Core", icon: "/Toni-Osho-Portfolio/icons/DotNet.png" },
                   { name: "C++", icon: "/Toni-Osho-Portfolio/icons/C++.png" },
                   { name: "Java", icon: "/Toni-Osho-Portfolio/icons/Java.png" },
-                  { name: "MySQL", icon: "/Toni-Osho-Portfolio/icons/MySQL.png" }
+                  { name: "MySQL", icon: "/Toni-Osho-Portfolio/icons/MySQL.png" },
+                  { name: "SQL Server", icon: "/Toni-Osho-Portfolio/icons/SqlServer.png" },
+                  { name: "Entity Framework", icon: "/Toni-Osho-Portfolio/icons/EntityFramework.png" }
                 ].map((tech, index) => (
                   <div key={index} className="flex flex-col items-center rounded-lg transition-all duration-200 aspect-square justify-center hover:scale-110">
                     <img 
@@ -304,14 +309,6 @@ const Home: React.FC = () => {
                     <span className="text-gray-300 text-xs text-center font-medium pointer-events-none select-none">{tech.name}</span>
                   </div>
                 ))}
-              </div>
-              <div className="flex justify-center">
-                <span className="inline-flex items-center gap-2 bg-gray-600/50 text-gray-400 px-6 py-3 rounded-full text-sm font-medium border border-gray-600/50 cursor-not-allowed">
-                  Coming Soon
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </span>
               </div>
             </div>
 
@@ -352,7 +349,10 @@ const Home: React.FC = () => {
                 {[
                   { name: "Git", icon: "/Toni-Osho-Portfolio/icons/Git.png" },
                   { name: "Visual Studio", icon: "/Toni-Osho-Portfolio/icons/VisualStudio.png" },
-                  { name: "Linux", icon: "/Toni-Osho-Portfolio/icons/Linux.png" }
+                  { name: "Linux", icon: "/Toni-Osho-Portfolio/icons/Linux.png" },
+                  { name: "PyQt5", icon: "/Toni-Osho-Portfolio/icons/Qt.png" },
+                  { name: "OpenCV", icon: "/Toni-Osho-Portfolio/icons/OpenCV.png" },
+                  { name: "NumPy", icon: "/Toni-Osho-Portfolio/icons/NumPy.png" }
                 ].map((tech, index) => (
                   <div key={index} className="flex flex-col items-center rounded-lg transition-all duration-200 aspect-square justify-center hover:scale-110">
                     <img 

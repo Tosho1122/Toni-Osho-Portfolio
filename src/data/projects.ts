@@ -163,6 +163,7 @@ export const projects: Project[] = [
       "/Toni-Osho-Portfolio/images/Projects/EQUIPMENT MAINTENANCE TRACKER/EQUIPMENT MAINTENANCE TRACKER 07.png",
       "/Toni-Osho-Portfolio/images/Projects/EQUIPMENT MAINTENANCE TRACKER/EQUIPMENT MAINTENANCE TRACKER 08.png"
     ],
+    youtubeUrl: "https://youtu.be/p3No0_vBfT0",
     technologies: [
       { name: "ASP.NET Core", icon: "/Toni-Osho-Portfolio/icons/DotNet.png", color: "purple" },
       { name: "Blazor Server", icon: "/Toni-Osho-Portfolio/icons/Blazor.png", color: "purple" },

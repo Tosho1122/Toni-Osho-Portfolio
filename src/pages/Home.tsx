@@ -28,7 +28,7 @@ const preloadImages = () => {
 // Animated Section Component
 const AnimatedSection = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
     <motion.div
@@ -186,6 +186,7 @@ const Home: React.FC = () => {
                 src="/Toni-Osho-Portfolio/images/toni.png"
                 alt="Toni Osho"
                 className="w-64 h-64 rounded-full object-cover shadow-2xl"
+                loading="eager"
                 whileHover={{ scale: 1.05, rotate: 2 }}
                 transition={{ duration: 0.3 }}
               />

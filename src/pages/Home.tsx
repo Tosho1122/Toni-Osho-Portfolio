@@ -441,6 +441,7 @@ const Home: React.FC = () => {
           technologies={selectedProject.technologies}
           liveLink={selectedProject.liveLink}
           githubLink={selectedProject.githubLink}
+          slug={selectedProject.slug}
         />
       )}
     </div>

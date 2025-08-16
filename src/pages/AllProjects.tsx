@@ -1,10 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { projects } from '../data/projects';
+import { findProjectBySlug } from '../utils/projectUtils';
 import ProjectCard from '../components/ui/ProjectCard';
 import ProjectModal from '../components/ui/ProjectModal';
 
 const AllProjects: React.FC = () => {
+  const { projectSlug } = useParams<{ projectSlug?: string }>();
+  const navigate = useNavigate();
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+
+  // Sync modal state with URL parameter
+  useEffect(() => {
+    if (projectSlug) {
+      const project = findProjectBySlug(projectSlug);
+      if (project) {
+        setSelectedProject(project);
+      } else {
+        // Invalid slug, redirect to projects page
+        navigate('/projects', { replace: true });
+      }
+    } else {
+      setSelectedProject(null);
+    }
+  }, [projectSlug, navigate]);
+
+  // Handle opening a project modal
+  const handleProjectClick = (project: typeof projects[0]) => {
+    setSelectedProject(project);
+    navigate(`/projects/${project.slug}`);
+  };
+
+  // Handle closing the modal
+  const handleModalClose = () => {
+    setSelectedProject(null);
+    navigate('/projects');
+  };
   
   return (
     <div className="min-h-screen relative">
@@ -42,7 +73,7 @@ const AllProjects: React.FC = () => {
                 thumbnail={project.thumbnail}
                 images={project.images}
                 technologies={project.technologies}
-                onClick={() => setSelectedProject(project)}
+                onClick={() => handleProjectClick(project)}
               />
             ))}
           </div>
@@ -51,7 +82,7 @@ const AllProjects: React.FC = () => {
           {selectedProject && (
             <ProjectModal
               isOpen={!!selectedProject}
-              onClose={() => setSelectedProject(null)}
+              onClose={handleModalClose}
               title={selectedProject.title}
               description={selectedProject.description}
               longDescription={selectedProject.longDescription}
@@ -61,6 +92,7 @@ const AllProjects: React.FC = () => {
               technologies={selectedProject.technologies}
               liveLink={selectedProject.liveLink}
               githubLink={selectedProject.githubLink}
+              slug={selectedProject.slug}
             />
           )}
         </div>

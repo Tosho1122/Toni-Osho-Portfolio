@@ -4,7 +4,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-gradient-to-r from-gray-900 via-black to-gray-900 text-white py-12 mt-auto w-full relative z-30">
       <div className="max-w-full px-6">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 max-w-6xl mx-auto">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 max-w-6xl mx-auto">
           {/* Contact Section */}
           <div className="space-y-4">
             <h3 className="text-xl font-semibold text-white">Contact Me</h3>
@@ -21,6 +21,35 @@ const Footer: React.FC = () => {
               <p className="text-gray-400 text-sm">
                 © Toni Osho 2025. All rights reserved.
               </p>
+            </div>
+          </div>
+
+          {/* Documents Section */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold text-white">Documents</h3>
+            <div className="flex flex-col space-y-2">
+              <a 
+                href="/Toni-Osho-Portfolio/Oluwatoni Osho Resume.pdf" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors group inline-flex items-center space-x-2"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span className="text-sm">Download Resume</span>
+              </a>
+              <a 
+                href="/Toni-Osho-Portfolio/Oluwatoni Osho Cover Letter.pdf" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors group inline-flex items-center space-x-2"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span className="text-sm">Download Cover Letter</span>
+              </a>
             </div>
           </div>
 

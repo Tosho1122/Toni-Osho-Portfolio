@@ -26,7 +26,7 @@ function App() {
             <Route path="/gamedev" element={<GameDev />} />
             <Route path="/fullstack" element={<FullStackDevelopment />} />
             <Route path="/software" element={<SoftwareDevelopment />} />
-            <Route path="/projects" element={<AllProjects />} />
+            <Route path="/projects/:projectSlug?" element={<AllProjects />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

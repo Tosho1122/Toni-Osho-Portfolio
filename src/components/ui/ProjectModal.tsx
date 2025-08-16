@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import TechnologyBadge from './TechnologyBadge';
+import { generateProjectShareUrl, copyToClipboard } from '../../utils/projectUtils';
 
 interface Technology {
   name: string;
@@ -21,6 +22,7 @@ interface ProjectModalProps {
   technologies: Technology[];
   liveLink?: string;
   githubLink?: string;
+  slug: string;
 }
 
 const ProjectModal: React.FC<ProjectModalProps> = ({
@@ -34,9 +36,11 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
   youtubeUrl,
   technologies,
   liveLink,
-  githubLink
+  githubLink,
+  slug
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [copyFeedback, setCopyFeedback] = useState<string | null>(null);
 
   useEffect(() => {
     if (images.length > 1) {
@@ -61,6 +65,20 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
 
   const prevImage = () => {
     setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const handleShareProject = async () => {
+    const shareUrl = generateProjectShareUrl(slug);
+    const success = await copyToClipboard(shareUrl);
+    
+    if (success) {
+      setCopyFeedback('Link copied to clipboard!');
+    } else {
+      setCopyFeedback('Failed to copy link');
+    }
+    
+    // Clear feedback after 3 seconds
+    setTimeout(() => setCopyFeedback(null), 3000);
   };
 
   return createPortal(
@@ -170,35 +188,56 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                 </div>
 
                 {/* Links - Learn More button style */}
-                {(liveLink || githubLink) && (
-                  <div className="flex gap-4">
-                    {liveLink && (
-                      <a
-                        href={liveLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-gray-800/70 hover:bg-gray-700/80 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-600/50 hover:border-white/50 hover:text-white hover:scale-105"
-                      >
-                        View Live Project
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
-                      </a>
-                    )}
-                    {githubLink && (
-                      <a
-                        href={githubLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-gray-800/70 hover:bg-gray-700/80 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-600/50 hover:border-white/50 hover:text-white hover:scale-105"
-                      >
-                        View on GitHub
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                      </a>
-                    )}
-                  </div>
+                <div className="flex flex-wrap gap-4">
+                  {liveLink && (
+                    <a
+                      href={liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-gray-800/70 hover:bg-gray-700/80 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-600/50 hover:border-white/50 hover:text-white hover:scale-105"
+                    >
+                      View Live Project
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  )}
+                  {githubLink && (
+                    <a
+                      href={githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-gray-800/70 hover:bg-gray-700/80 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-600/50 hover:border-white/50 hover:text-white hover:scale-105"
+                    >
+                      View on GitHub
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </a>
+                  )}
+                  
+                  {/* Share Button */}
+                  <button
+                    onClick={handleShareProject}
+                    className="inline-flex items-center gap-2 bg-blue-600/70 hover:bg-blue-600/80 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-blue-500/50 hover:border-blue-400/50 hover:scale-105"
+                  >
+                    Share Project
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
+                    </svg>
+                  </button>
+                </div>
+                
+                {/* Copy feedback */}
+                {copyFeedback && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="text-sm text-green-400 bg-green-400/10 px-3 py-2 rounded-lg border border-green-400/20"
+                  >
+                    {copyFeedback}
+                  </motion.div>
                 )}
               </motion.div>
 

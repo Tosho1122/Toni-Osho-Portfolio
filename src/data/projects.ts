@@ -16,6 +16,7 @@ export interface Project {
   liveLink?: string;
   githubLink?: string;
   categories: ('Backend' | 'Game Development' | 'Frontend' | 'Software Development')[];
+  slug: string;
 }
 
 export const projects: Project[] = [
@@ -40,7 +41,8 @@ export const projects: Project[] = [
       { name: "FMOD", icon: "/Toni-Osho-Portfolio/icons/Fmod.png", color: "red" }
     ],
     liveLink: "https://store.steampowered.com/app/3198890/Scale_the_Depths/",
-    categories: ["Game Development"]
+    categories: ["Game Development"],
+    slug: "scale-the-depths"
   },
   {
     title: "Zeitghast",
@@ -65,7 +67,8 @@ export const projects: Project[] = [
       { name: "Steam Publishing", color: "blue" }
     ],
     liveLink: "https://store.steampowered.com/app/2593070/Zeitghast/",
-    categories: ["Game Development"]
+    categories: ["Game Development"],
+    slug: "zeitghast"
   },
   {
     title: "Music Playing Web App",
@@ -84,7 +87,8 @@ export const projects: Project[] = [
       { name: "JavaScript", color: "yellow" }
     ],
     githubLink: "https://github.com/RaiyanK23/Spoofify",
-    categories: ["Frontend","Backend"]
+    categories: ["Frontend","Backend"],
+    slug: "music-playing-web-app"
   },
   {
     title: "UDP File Transfer Program",
@@ -99,7 +103,8 @@ export const projects: Project[] = [
       { name: "System Programming", color: "gray" }
     ],
     githubLink: "https://github.com/Tosho1122/UDP-File-Transfer-Server-and-Client",
-    categories: ["Software Development"]
+    categories: ["Software Development"],
+    slug: "udp-file-transfer-program"
   },
   {
     title: "Hotel Management System",
@@ -124,7 +129,8 @@ export const projects: Project[] = [
       { name: "SQLAlchemy", color: "red" }
     ],
     githubLink: "",
-    categories: ["Frontend", "Backend"]
+    categories: ["Frontend", "Backend"],
+    slug: "hotel-management-system"
   },
   {
     title: "Oil & Gas Field Management System",
@@ -136,7 +142,7 @@ export const projects: Project[] = [
       "/Toni-Osho-Portfolio/images/Projects/Oil&Gas/Oil&GasReporting-1.png",
       "/Toni-Osho-Portfolio/images/Projects/Oil&Gas/Oil&GasReporting-2.png",
       "/Toni-Osho-Portfolio/images/Projects/Oil&Gas/Oil&GasReporting-3.png",
-      "/Toni-Osho-Portfolio/images/Projects/Oil&Gas/Oil&GasReporting-4.png",
+      // "/Toni-Osho-Portfolio/images/Projects/Oil&Gas/Oil&GasReporting-4.png",
       "/Toni-Osho-Portfolio/images/Projects/Oil&Gas/Oil&GasReporting-5.png"
     ],
     technologies: [
@@ -146,7 +152,8 @@ export const projects: Project[] = [
       { name: "JavaScript", icon: "/Toni-Osho-Portfolio/icons/JavaScript.png", color: "yellow" }
     ],
     githubLink: "",
-    categories: ["Frontend"]
+    categories: ["Frontend"],
+    slug: "oil-gas-field-management-system"
   },
   {
     title: "Equipment Maintenance Tracker",
@@ -173,7 +180,8 @@ export const projects: Project[] = [
       { name: "Bootstrap", icon: "/Toni-Osho-Portfolio/icons/Bootstrap.png", color: "purple" }
     ],
     githubLink: "https://github.com/Tosho1122/EquipmentMaintenanceTracker-Public",
-    categories: ["Backend", "Frontend","Software Development"]
+    categories: ["Backend", "Frontend","Software Development"],
+    slug: "equipment-maintenance-tracker"
   },
   {
     title: "Kopi - Video Duplicate Detector",
@@ -192,6 +200,7 @@ export const projects: Project[] = [
       { name: "NumPy", icon: "/Toni-Osho-Portfolio/icons/NumPy.png", color: "blue" }
     ],
     githubLink: "https://github.com/Tosho1122/Kopi/",
-    categories: ["Software Development"]
+    categories: ["Software Development"],
+    slug: "kopi-video-duplicate-detector"
   }
 ];

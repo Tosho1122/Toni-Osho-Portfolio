@@ -202,5 +202,28 @@ export const projects: Project[] = [
     githubLink: "https://github.com/Tosho1122/Kopi/",
     categories: ["Software Development"],
     slug: "kopi-video-duplicate-detector"
+  },
+  {
+    title: "Portfolio Website",
+    description: "Modern responsive portfolio website showcasing full-stack development expertise with React, TypeScript, and advanced animations. Features dynamic project galleries, contact forms with EmailJS integration, and optimized performance.",
+    longDescription: "A comprehensive portfolio website built with modern web technologies to showcase software development expertise across multiple disciplines. The React-based application features a responsive design with Tailwind CSS, smooth animations powered by Framer Motion, and TypeScript for enhanced code reliability. Key features include a dynamic project showcase with modal galleries, an interactive contact form using EmailJS for seamless communication, categorized project filtering by development type (Game Dev, Full Stack, Software Dev), animated sections with scroll-triggered effects, and optimized performance through image preloading and lazy loading. The website demonstrates proficiency in modern frontend development practices including component-based architecture, responsive design principles, performance optimization, and user experience design. Built with Vite for fast development and optimized builds, the project showcases technical skills while maintaining clean, maintainable code architecture.",
+    thumbnail: "/Toni-Osho-Portfolio/images/Projects/Portfolio WebSite/Personal Website01.jpg",
+    images: [
+      "/Toni-Osho-Portfolio/images/Projects/Portfolio WebSite/Personal Website01.jpg",
+      "/Toni-Osho-Portfolio/images/Projects/Portfolio WebSite/Personal Website02.jpg",
+      "/Toni-Osho-Portfolio/images/Projects/Portfolio WebSite/Personal Website03.jpg",
+      "/Toni-Osho-Portfolio/images/Projects/Portfolio WebSite/Personal Website04.jpg"
+    ],
+    technologies: [
+      { name: "React", icon: "/Toni-Osho-Portfolio/icons/React.png", color: "blue" },
+      { name: "TypeScript", icon: "/Toni-Osho-Portfolio/icons/TypeScript.png", color: "blue" },
+      { name: "Vite", icon: "/Toni-Osho-Portfolio/icons/Vite.png", color: "purple" },
+      { name: "Tailwind CSS", icon: "/Toni-Osho-Portfolio/icons/Tailwind.png", color: "blue" },
+      { name: "JavaScript", icon: "/Toni-Osho-Portfolio/icons/JavaScript.png", color: "yellow" }
+    ],
+    liveLink: "https://Tosho1122.github.io/Toni-Osho-Portfolio/",
+    githubLink: "https://github.com/Tosho1122/Toni-Osho-Portfolio",
+    categories: ["Frontend"],
+    slug: "portfolio-website"
   }
 ];

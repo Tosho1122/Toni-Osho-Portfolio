@@ -222,7 +222,7 @@ export const projects: Project[] = [
       { name: "JavaScript", icon: "/Toni-Osho-Portfolio/icons/JavaScript.png", color: "yellow" }
     ],
     liveLink: "https://Tosho1122.github.io/Toni-Osho-Portfolio/",
-    githubLink: "https://github.com/Tosho1122/Toni-Osho-Portfolio",
+    githubLink: "",
     categories: ["Frontend"],
     slug: "portfolio-website"
   }
